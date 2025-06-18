@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sorry Aybree 💔</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background-color: #fff3e0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3rem;
+      color: #ff6f00;
+    }
+
+    .buttons {
+      margin-top: 20px;
+    }
+
+    button {
+      padding: 15px 25px;
+      margin: 10px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    #yesBtn {
+      background-color: #43a047;
+      color: white;
+    }
+
+    #noBtn {
+      background-color: #e53935;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <h1 id="question">Will you forgive me, Aybree?</h1>
+  <div class="buttons">
+    <button id="yesBtn">Yes</button>
+    <button id="noBtn">No</button>
+  </div>
+
+  <script>
+    const yesBtn = document.getElementById('yesBtn');
+    const noBtn = document.getElementById('noBtn');
+    const question = document.getElementById('question');
+
+    const messages = [
+      "Yes",
+      "Please Aybree 🥺",
+      "Me and Alfonso are crying rn 😢",
+      "We can't even play Roblox anymore...",
+      "Every time I open Roblox, I cry 😭",
+      "Alfonso said: 'bro she was the one' 💔",
+      "Even my Puffle left me 🧸",
+      "I deleted my Club Penguin game for you...",
+      "Please Aybree, I'll give you my limiteds 🙏",
+      "You're the only one who liked Ken Carson like me 😭",
+      "AYBREE PLEASE I’M ON MY KNEES 😩🙏",
+      "MY ROBLOX AVATAR IS DEPRESSED NOW 😞"
+    ];
+
+    let clickCount = 0;
+
+    noBtn.addEventListener('click', () => {
+      if (clickCount < messages.length - 1) {
+        clickCount++;
+        yesBtn.textContent = messages[clickCount];
+        yesBtn.style.fontSize = `${1.2 + clickCount * 0.5}rem`;
+      } else {
+        // Max drama
+        yesBtn.style.fontSize = '6rem';
+        yesBtn.style.padding = '40px 70px';
+        noBtn.style.display = 'none';
+        question.textContent = "Aybree... even Roblox can't fix this pain 😭";
+      }
+    });
+
+    yesBtn.addEventListener('click', () => {
+      question.textContent = "THANK YOU AYBREE 💕💖 Alfonso and I can smile again 🥹";
+      yesBtn.style.display = 'none';
+      noBtn.style.display = 'none';
+    });
+  </script>
+</body>
+</html>
