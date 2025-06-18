@@ -2,86 +2,71 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Why Aybree? 😭</title>
+  <title>Message for Aybree 💔</title>
   <style>
     body {
-      font-family: 'Arial', sans-serif;
-      background-color: #e1f5fe;
+      background: linear-gradient(to bottom, #f8bbd0, #fce4ec);
+      font-family: 'Courier New', monospace;
+      color: #880e4f;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       height: 100vh;
+      margin: 0;
       text-align: center;
-      padding: 20px;
     }
 
     h1 {
-      font-size: 2.8rem;
-      color: #0277bd;
-    }
-
-    .buttons {
-      margin-top: 30px;
+      font-size: 3rem;
+      margin-bottom: 20px;
+      text-shadow: 1px 1px 4px white;
     }
 
     button {
-      padding: 15px 25px;
-      margin: 10px;
-      font-size: 1.1rem;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      background-color: #0288d1;
+      padding: 20px 40px;
+      font-size: 1.5rem;
+      background-color: #ec407a;
       color: white;
-      transition: background 0.3s;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: transform 0.2s, background 0.3s;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     }
 
     button:hover {
-      background-color: #01579b;
+      background-color: #ad1457;
+      transform: scale(1.05);
     }
 
-    #response {
-      margin-top: 40px;
-      font-size: 1.3rem;
-      color: #d32f2f;
-      max-width: 600px;
+    .heart {
+      font-size: 4rem;
+      animation: pulse 1.2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
     }
   </style>
 </head>
 <body>
 
-  <h1 id="question">Why do you want to break up with me, Aybree?</h1>
+  <div class="heart">💔</div>
+  <h1>This one’s for you, Aybree</h1>
+  <button onclick="playAudio()">Play Message 🎧</button>
 
-  <div class="buttons" id="buttonGroup">
-    <button onclick="answer('talk')">Because you don't talk to me</button>
-    <button onclick="answer('believe')">Because I don't believe you anymore</button>
-    <button onclick="answer('hate')">Because I hate you</button>
-  </div>
-
-  <div id="response"></div>
+  <audio id="audio" src="aybree.wav"></audio>
 
   <script>
-    const buttonGroup = document.getElementById("buttonGroup");
-    const responseDiv = document.getElementById("response");
-
-    function showButtonsAgain() {
-      buttonGroup.style.display = "block";
-      responseDiv.textContent = "";
-    }
-
-    function answer(type) {
-      buttonGroup.style.display = "none";
-      if (type === "talk") {
-        responseDiv.textContent = "I swear I try... and when I'm free, I’ll ALWAYS message you. Always. 💬💖";
-      } else if (type === "believe") {
-        responseDiv.textContent = "Please believe me. I’ve just been really busy. Don’t stop talking to me, Aybree... 🕒🥺";
-      } else if (type === "hate") {
-        responseDiv.textContent = "No you don’t hate me... answer again. You know you don’t. 😢";
-        setTimeout(showButtonsAgain, 5000); // 5 segundos
-      }
+    function playAudio() {
+      const audio = document.getElementById('audio');
+      audio.play();
     }
   </script>
 
 </body>
 </html>
+
