@@ -57,6 +57,7 @@
       height: 100vh;
       text-align: center;
       color: #fff;
+      padding: 20px;
     }
 
     .hidden {
@@ -127,6 +128,31 @@
       border-radius: 20px;
       box-shadow: 0 0 10px white;
       display: none;
+    }
+
+    /* 👇 Estilos responsive para móviles */
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2.3em;
+        padding: 0 10px;
+      }
+
+      button {
+        font-size: 20px;
+        padding: 16px 32px;
+        margin: 12px;
+        width: 80%;
+        max-width: 300px;
+      }
+
+      .message {
+        font-size: 22px;
+        padding: 12px 24px;
+      }
+
+      video {
+        max-width: 95%;
+      }
     }
   </style>
 </head>
