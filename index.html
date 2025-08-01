@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>¿Sabes qué día es hoy?</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #ffd6e8, #ffaec0);
+      overflow: hidden;
+      font-family: 'Quicksand', sans-serif;
+      height: 100%;
+    }
+
+    .heart {
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      background: red;
+      transform: rotate(45deg);
+      animation: fall 10s linear infinite;
+    }
+
+    .heart::before, .heart::after {
+      content: "";
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      background: red;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -7.5px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -7.5px;
+      top: 0;
+    }
+
+    @keyframes fall {
+      0% { top: -10%; opacity: 1; }
+      100% { top: 110%; opacity: 0; }
+    }
+
+    .container {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      color: #fff;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .fade {
+      animation: fadein 1.5s forwards;
+    }
+
+    @keyframes fadein {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 3em;
+      margin: 0 0 30px;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+      color: #fff0f5;
+    }
+
+    button {
+      padding: 14px 28px;
+      margin: 10px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      border: none;
+      border-radius: 30px;
+      transition: all 0.4s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    #no {
+      background: #aaa;
+      color: white;
+    }
+
+    #si {
+      background: #ff69b4;
+      color: white;
+      font-weight: bold;
+      box-shadow: 0 0 15px #fff, 0 0 25px #ff69b4;
+      transform: scale(1);
+    }
+
+    #videoContainer {
+      display: none;
+      margin-top: 20px;
+    }
+
+    video {
+      max-width: 90%;
+      border: 5px solid white;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
+    }
+
+    .message {
+      font-size: 26px;
+      margin-top: 20px;
+      color: white;
+      font-weight: bold;
+      background-color: rgba(255, 105, 180, 0.7);
+      padding: 10px 20px;
+      border-radius: 20px;
+      box-shadow: 0 0 10px white;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Corazones -->
+  <script>
+    for (let i = 0; i < 100; i++) {
+      let heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDelay = Math.random() * 10 + 's';
+      heart.style.opacity = Math.random();
+      heart.style.width = heart.style.height = Math.random() * 10 + 10 + 'px';
+      document.body.appendChild(heart);
+    }
+  </script>
+
+  <div class="container" id="step1">
+    <h1 class="fade">¿Sabes qué día es hoy?</h1>
+    <button id="btn1">no we</button>
+  </div>
+
+  <div class="container hidden" id="step2">
+    <h1 class="fade">Es el día de la novia jejejeje</h1>
+    <button id="btn2">no somos novios pinche daniel pendejo</button>
+  </div>
+
+  <div class="container hidden" id="step3">
+    <h1 class="fade">¿Quieres ser mi novia Shania?</h1>
+    <div>
+      <button id="no">No</button>
+      <button id="si">Sí</button>
+    </div>
+  </div>
+
+  <div class="container hidden" id="step4">
+    <div id="mensajeFinal" class="message">MIRA LO QUE TE PREPARÉ</div>
+    <div id="videoContainer">
+      <video controls autoplay>
+        <source src="video.mp4" type="video/mp4">
+        Tu navegador no soporta videos HTML5.
+      </video>
+    </div>
+  </div>
+
+  <script>
+    const step1 = document.getElementById('step1');
+    const step2 = document.getElementById('step2');
+    const step3 = document.getElementById('step3');
+    const step4 = document.getElementById('step4');
+
+    const btn1 = document.getElementById('btn1');
+    const btn2 = document.getElementById('btn2');
+    const noBtn = document.getElementById('no');
+    const siBtn = document.getElementById('si');
+    const mensajeFinal = document.getElementById('mensajeFinal');
+    const videoContainer = document.getElementById('videoContainer');
+
+    btn1.onclick = () => {
+      step1.classList.add('hidden');
+      step2.classList.remove('hidden');
+    };
+
+    btn2.onclick = () => {
+      step2.classList.add('hidden');
+      step3.classList.remove('hidden');
+    };
+
+    noBtn.onclick = () => {
+      let scale = 1;
+      let interval = setInterval(() => {
+        scale -= 0.05;
+        if (scale <= 0.3) {
+          clearInterval(interval);
+          scale = 0.3;
+        }
+        noBtn.style.transform = `scale(${scale})`;
+        siBtn.style.transform = `scale(${1 + (1 - scale)})`;
+      }, 50);
+    };
+
+    siBtn.onclick = () => {
+      step3.classList.add('hidden');
+      step4.classList.remove('hidden');
+      mensajeFinal.style.display = 'block';
+      setTimeout(() => {
+        mensajeFinal.style.display = 'none';
+        videoContainer.style.display = 'block';
+      }, 4000);
+    };
+  </script>
+
+</body>
+</html>
