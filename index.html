@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>¿Sabes qué día es hoy?</title>
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
   <style>
@@ -9,9 +10,9 @@
       margin: 0;
       padding: 0;
       background: linear-gradient(to bottom, #ffd6e8, #ffaec0);
-      overflow: hidden;
       font-family: 'Quicksand', sans-serif;
       height: 100%;
+      overflow: hidden;
     }
 
     .heart {
@@ -130,28 +131,43 @@
       display: none;
     }
 
-    /* 👇 Estilos responsive para móviles */
     @media (max-width: 600px) {
+      html, body {
+        overflow-y: auto;
+      }
+
+      .container {
+        padding: 40px 20px;
+        justify-content: flex-start;
+      }
+
       h1 {
-        font-size: 2.3em;
-        padding: 0 10px;
+        font-size: 2.5em;
+        line-height: 1.2;
       }
 
       button {
-        font-size: 20px;
-        padding: 16px 32px;
-        margin: 12px;
-        width: 80%;
-        max-width: 300px;
+        font-size: 22px;
+        padding: 20px 32px;
+        margin: 14px;
+        width: 90%;
+        max-width: 320px;
+      }
+
+      #si {
+        box-shadow: 0 0 20px #fff, 0 0 35px #ff69b4;
       }
 
       .message {
-        font-size: 22px;
-        padding: 12px 24px;
+        font-size: 24px;
+        padding: 14px 28px;
+        margin: 20px 0;
       }
 
       video {
-        max-width: 95%;
+        max-width: 100%;
+        height: auto;
+        border-width: 4px;
       }
     }
   </style>
@@ -248,3 +264,4 @@
 
 </body>
 </html>
+
